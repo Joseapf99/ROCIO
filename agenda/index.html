@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#8A1538">
+  <title>Agenda Digital · Rocío Abreu</title>
+  <meta name="description" content="Agenda institucional y ciudadana de actividades, foros de energía y encuentros en territorio de la Diputada Federal Rocío Adriana Abreu Artiñano.">
+  <link rel="canonical" href="https://rocioabreu.mx/agenda/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Agenda Digital · Rocío Abreu">
+  <meta property="og:description" content="Consulta las próximas actividades públicas y sesiones legislativas de Rocío Abreu Artiñano.">
+  <meta property="og:url" content="https://rocioabreu.mx/agenda/">
+  <meta property="og:image" content="https://rocioabreu.mx/og-image.jpg">
+  
+  <!-- Google Fonts: Fraunces (display) + Archivo (todo lo demás) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/_astro/aviso-de-privacidad.Dw4grm9J.css">
+  
+  <style>
+    :root {
+      --guinda: #8A1538;
+      --guinda-hover: #6e102c;
+      --ciruela: #201418;
+      --crema: #FCFAF6;
+      --crema-muted: #F4F0E8;
+      --tinta: #1C1917;
+      --dorado: #8A6D3E;
+      --dorado-claro: #A98A5B;
+      --hairline: #E8E2D8;
+      --hairline-dark: rgba(255, 255, 255, 0.15);
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-sans: 'Archivo', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--crema);
+      color: var(--tinta);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display {
+      font-family: var(--font-display);
+    }
+
+    .label {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* Botones Oficiales del Sistema */
+    .btn-primario {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--guinda);
+      color: #fff;
+      padding: 0.75rem 1.4rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border-radius: 2px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-decoration: none;
+    }
+    .btn-primario:hover {
+      background-color: var(--guinda-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(138, 21, 56, 0.25);
+    }
+
+    .btn-fantasma {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: transparent;
+      color: #fff;
+      padding: 0.75rem 1.4rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border-radius: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-fantasma:hover {
+      border-color: #fff;
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-editorial {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: transparent;
+      color: var(--tinta);
+      padding: 0.6rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border: 1px solid var(--hairline);
+      border-radius: 2px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-editorial:hover {
+      border-color: var(--guinda);
+      color: var(--guinda);
+      background-color: #fff;
+    }
+
+    /* Animación Scroll Reveal Nativa */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Pestañas Subrayadas Estilo Trabajo Legislativo */
+    .tab-filtro {
+      position: relative;
+      padding-bottom: 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(28, 25, 23, 0.65);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      white-space: nowrap;
+    }
+    .tab-filtro:hover {
+      color: var(--tinta);
+    }
+    .tab-filtro.active {
+      color: var(--guinda);
+      font-weight: 600;
+      border-bottom-color: var(--guinda);
+    }
+
+    /* Fila de Gaceta Editorial */
+    .gaceta-row {
+      transition: background-color 0.2s ease;
+    }
+    .gaceta-row:hover {
+      background-color: #ffffff;
+    }
+
+    /* Etiqueta Pill Minimalista */
+    .pill-tag {
+      display: inline-block;
+      border: 1px solid var(--hairline);
+      padding: 0.25rem 0.65rem;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(28, 25, 23, 0.7);
+      background-color: var(--crema);
+      border-radius: 2px;
+    }
+
+    /* Marco Dorado Desplazado para Fotografías */
+    .marco-dorado-offset {
+      position: relative;
+    }
+    .marco-dorado-offset::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(169, 138, 91, 0.5);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .marco-dorado-offset img {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Consola Ejecutiva Interna */
+    .consola-ejecutiva {
+      background: #180e12;
+      border-top: 1px solid var(--hairline-dark);
+      border-bottom: 2px solid var(--dorado);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#contenido" class="enlace-omitir">Saltar al contenido</a>
+
+  <!-- ==============================================================
+       BARRA EJECUTIVA / MODO COORDINACIÓN (Visible al autenticarse)
+       ============================================================== -->
+  <div id="dev-admin-bar" class="hidden consola-ejecutiva text-crema text-xs py-3 px-4 sticky top-0 z-[60] shadow-xl">
+    <div class="contenedor flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded border border-dorado/40 bg-dorado/15 text-dorado-claro font-mono text-[11px] font-bold uppercase tracking-wider">
+          <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Consola de Planeación
+        </span>
+        <span class="text-crema/85">
+          Sesión activa: <strong id="dev-user-name" class="text-white font-medium">Coordinación</strong> 
+          — <span id="dev-user-role" class="text-dorado-claro">Equipo de Trabajo</span>
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <button id="toggle-view-btn" onclick="toggleDevPanel()" type="button" class="btn-fantasma py-1 px-3 text-xs text-crema/90 border-white/20 hover:border-dorado hover:text-white">
+          <span id="toggle-view-text">Ocultar Panel de Propuestas</span>
+        </button>
+        <button onclick="openNewProposalModal()" type="button" class="btn-primario py-1 px-3 text-xs bg-guinda hover:bg-guinda-hover text-white">
+          + Proponer Actividad
+        </button>
+        <button onclick="cerrarSesionDev()" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-rose-950/70 hover:bg-rose-900 border border-rose-500/50 text-rose-200 text-xs font-semibold transition cursor-pointer shadow-sm" title="Cerrar sesión de la consola">
+          <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+          <span>Cerrar sesión</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================================
+       HEADER OFICIAL ROCÍO ABREU
+       ============================================================== -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 h-[72px] header-solid" data-astro-cid-3ef6ksr2>
+    <div class="contenedor flex h-full items-center justify-between min-[1100px]:grid min-[1100px]:grid-cols-[1fr_auto_1fr]" data-astro-cid-3ef6ksr2>
+      
+      <!-- Zona izquierda -->
+      <nav class="hidden min-[1100px]:flex items-center gap-7" aria-label="Navegación principal" data-astro-cid-3ef6ksr2>
+        <a href="/" class="nav-link font-sans text-xs uppercase tracking-[0.1em] transition-opacity opacity-75 hover:opacity-100" data-astro-cid-3ef6ksr2>Inicio</a>
+        <a href="/trayectoria" class="nav-link font-sans text-xs uppercase tracking-[0.1em] transition-opacity opacity-75 hover:opacity-100" data-astro-cid-3ef6ksr2>Trayectoria</a>
+        <a href="/trabajo-legislativo" class="nav-link font-sans text-xs uppercase tracking-[0.1em] transition-opacity opacity-75 hover:opacity-100" data-astro-cid-3ef6ksr2>Trabajo legislativo</a>
+      </nav>
+
+      <!-- Lockup central -->
+      <a href="/" class="lockup inline-flex items-center gap-2 font-sans text-sm font-semibold uppercase tracking-[0.16em] min-[1100px]:justify-self-center min-[1100px]:text-[18px]" aria-label="Inicio" data-astro-cid-3ef6ksr2>
+        <span>Rocío Abreu</span>
+        <span class="text-base leading-none" role="img" aria-label="Bandera de México">🇲🇽</span>
+      </a>
+
+      <!-- Zona derecha -->
+      <div class="hidden min-[1100px]:flex items-center justify-end gap-7" data-astro-cid-3ef6ksr2>
+        <a href="/gestion" class="nav-link font-sans text-xs uppercase tracking-[0.1em] transition-opacity opacity-75 hover:opacity-100" data-astro-cid-3ef6ksr2>Gestión y apoyos</a>
+        <a href="/agenda/" aria-current="page" class="nav-link font-sans text-xs uppercase tracking-[0.1em] transition-opacity opacity-100 text-guinda font-semibold border-b-2 border-guinda pb-1" data-astro-cid-3ef6ksr2>Agenda digital</a>
+        <a href="/contacto" class="nav-link font-sans text-xs uppercase tracking-[0.1em] transition-opacity opacity-75 hover:opacity-100" data-astro-cid-3ef6ksr2>Contacto</a>
+
+        <!-- Gatillo sutil de acceso para el equipo (cuando NO hay sesión) -->
+        <button id="header-dev-login-btn" onclick="openDevLoginModal()" type="button" class="ml-1 inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-sans uppercase tracking-wider text-tinta/60 hover:text-guinda border border-hairline rounded transition cursor-pointer" title="Acceso para el equipo de trabajo (Ctrl+Shift+D)">
+          <svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          <span>Equipo</span>
+        </button>
+
+        <!-- Grupo de sesión activa en Desktop (Visible si hay sesión) -->
+        <div id="header-session-group" class="hidden items-center gap-2">
+          <button onclick="toggleDevPanel()" type="button" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-guinda border border-guinda/30 rounded bg-guinda/5 hover:bg-guinda/10 cursor-pointer transition" title="Ver / Ocultar panel de planeación">
+            <span id="header-user-alias">👑 Diputada</span>
+          </button>
+          <button onclick="cerrarSesionDev()" type="button" class="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-medium text-rose-700 hover:text-white hover:bg-rose-700 border border-rose-300 rounded transition cursor-pointer" title="Cerrar sesión">
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+            <span>Cerrar sesión</span>
+          </button>
+        </div>
+
+        <span class="h-4 w-px bg-current opacity-25" aria-hidden="true"></span>
+        <div class="flex items-center gap-4">
+          <a href="https://www.facebook.com/RocioAbreuA" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
+          <a href="https://www.instagram.com/rocioabreua" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+          <a href="https://x.com/RocioAbreuA" target="_blank" rel="noopener noreferrer" aria-label="X" class="social-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Menú móvil hamburguesa y acceso de equipo -->
+      <div class="flex items-center gap-3 min-[1100px]:hidden">
+        <button id="mobile-dev-login-btn" onclick="openDevLoginModal()" type="button" class="text-xs px-2.5 py-1 rounded border border-hairline font-semibold text-guinda">
+          🔒 Equipo
+        </button>
+        <div id="mobile-session-group" class="hidden items-center gap-1.5">
+          <button onclick="toggleDevPanel()" type="button" class="text-xs px-2 py-1 rounded border border-guinda font-semibold text-guinda bg-guinda/5">
+            <span id="mobile-user-alias">👑 Diputada</span>
+          </button>
+          <button onclick="cerrarSesionDev()" type="button" class="text-[11px] px-2 py-1 rounded border border-rose-300 text-rose-700 bg-rose-50 font-medium cursor-pointer" title="Cerrar sesión">
+            Salir
+          </button>
+        </div>
+        <button id="menu-toggle" type="button" class="relative inline-flex h-11 w-11 items-center justify-center -mr-2.5" aria-label="Abrir menú" onclick="toggleMobileMenu()">
+          <span class="ham"><span class="ham-line"></span><span class="ham-line"></span><span class="ham-line"></span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Móvil desplegable -->
+    <nav id="menu-movil" class="menu-movil bg-guinda min-[1100px]:hidden hidden" aria-label="Menú móvil">
+      <ul class="contenedor flex flex-col py-2">
+        <li><a href="/" class="block border-b border-white/10 py-4 font-sans text-base text-crema/80">Inicio</a></li>
+        <li><a href="/trayectoria" class="block border-b border-white/10 py-4 font-sans text-base text-crema/80">Trayectoria</a></li>
+        <li><a href="/trabajo-legislativo" class="block border-b border-white/10 py-4 font-sans text-base text-crema/80">Trabajo legislativo</a></li>
+        <li><a href="/gestion" class="block border-b border-white/10 py-4 font-sans text-base text-crema/80">Gestión y apoyos</a></li>
+        <li><a href="/agenda/" class="block border-b border-white/10 py-4 font-sans text-base text-white font-bold">Agenda Digital</a></li>
+        <li><a href="/contacto" class="block border-b border-white/10 py-4 font-sans text-base text-crema/80">Contacto</a></li>
+
+        <!-- Estado de sesión y opción de Cerrar sesión en el menú móvil -->
+        <li id="menu-movil-session-box" class="hidden py-4 border-t border-white/20 mt-2 bg-black/20 -mx-6 px-6 rounded-lg">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <p class="text-[11px] uppercase tracking-wider text-dorado-claro font-semibold">Sesión activa</p>
+              <p id="menu-movil-username" class="text-sm font-semibold text-white">Diputada</p>
+            </div>
+            <button onclick="cerrarSesionDev()" type="button" class="inline-flex items-center gap-1.5 px-3 py-2 rounded bg-rose-700 hover:bg-rose-600 text-white text-xs font-semibold shadow transition cursor-pointer">
+              <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+              <span>Cerrar sesión</span>
+            </button>
+          </div>
+        </li>
+
+        <li id="menu-movil-login-box" class="py-4">
+          <button onclick="openDevLoginModal()" type="button" class="inline-flex items-center gap-2 text-sm text-dorado-claro hover:text-white font-medium cursor-pointer">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            <span>Acceso para el equipo de trabajo</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Espaciador para el header fijo -->
+  <div class="h-[72px]" aria-hidden="true"></div>
+
+  <main id="contenido">
+    
+    <!-- ==============================================================
+         SECCIÓN HERO MONUMENTAL (Estilo Ciruela & Retrato Oficial)
+         ============================================================== -->
+    <section class="bg-ciruela text-crema">
+      <div class="contenedor py-16 lg:py-24">
+        <div class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
+          
+          <div class="lg:col-span-7">
+            <p class="label reveal text-dorado-claro">Agenda Institucional y Territorial · LXVI Legislatura</p>
+            <h1 class="reveal mt-6 font-display text-[clamp(36px,5.2vw,68px)] leading-[1.05] text-crema">
+              Compromisos y encuentros con el pueblo de Campeche
+            </h1>
+            <p class="reveal mt-7 max-w-lectura text-lg leading-relaxed text-crema/75">
+              Consulta el calendario oficial de audiencias públicas, foros parlamentarios de energía y recorridos de gestión social de la <strong>Diputada Federal Rocío Adriana Abreu Artiñano</strong>.
+            </p>
+            
+            <div class="reveal mt-8 flex flex-wrap items-center gap-4 text-xs font-sans uppercase tracking-[0.1em] text-crema/60">
+              <span class="flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                <span id="hero-stat-confirmados" class="text-white font-bold">4</span> Eventos confirmados
+              </span>
+              <span class="text-white/20">•</span>
+              <span>San Lázaro, Carmen y Campeche</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="reveal marco-dorado-offset">
+              <img src="/images/hero-colonia.webp" alt="Rocío Abreu en recorrido territorial con la ciudadanía campechana." loading="eager" decoding="async" class="aspect-[4/3] w-full object-cover" style="object-position:60% 28%">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bloque de 3 Ejes Estratégicos con Foliación Dorada (01, 02, 03) -->
+        <div class="mt-16 grid border-t border-white/15 md:grid-cols-3">
+          <div class="reveal border-white/15 py-8 md:border-l md:px-8 md:py-10 md:first:border-l-0 md:first:pl-0">
+            <p class="font-display text-2xl font-medium text-dorado">01</p>
+            <p class="mt-3 font-sans text-lg font-semibold text-crema">Comisión de Energía</p>
+            <p class="mt-2 text-sm leading-relaxed text-crema/60">Mesas de diálogo con el sector productivo, comparecencias y proyectos de soberanía energética peninsular.</p>
+          </div>
+          <div class="reveal border-white/15 py-8 md:border-l md:px-8 md:py-10 md:first:border-l-0 md:first:pl-0">
+            <p class="font-display text-2xl font-medium text-dorado">02</p>
+            <p class="mt-3 font-sans text-lg font-semibold text-crema">Territorio y Escuelas</p>
+            <p class="mt-2 text-sm leading-relaxed text-crema/60">Supervisión directa en planteles educativos, domos cívicos y atención vecinal colonia por colonia.</p>
+          </div>
+          <div class="reveal border-white/15 py-8 md:border-l md:px-8 md:py-10 md:first:border-l-0 md:first:pl-0">
+            <p class="font-display text-2xl font-medium text-dorado">03</p>
+            <p class="mt-3 font-sans text-lg font-semibold text-crema">Salud y Apoyo Social</p>
+            <p class="mt-2 text-sm leading-relaxed text-crema/60">Brigadas del programa «Rocío en tu Salud», exámenes optométricos gratuitos y canasta básica accesible.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         PANEL DE COORDINACIÓN / DEV (Solo visible si hay sesión activa)
+         ============================================================== -->
+    <section id="dev-management-panel" class="hidden border-b border-dorado/40 bg-[#1f1317] text-crema py-12 transition-all">
+      <div class="contenedor">
+        
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-8 border-b border-white/15">
+          <div>
+            <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-dorado-claro">
+              <span>Módulo Interno de Trabajo</span>
+              <span>•</span>
+              <span id="role-badge" class="px-2 py-0.5 rounded border border-dorado/50 bg-dorado/20 text-dorado-claro font-mono font-bold">Colaborador</span>
+            </div>
+            <h2 class="mt-3 font-display text-[clamp(26px,3.5vw,42px)] text-white">
+              Bandeja de Planeación y Aprobación
+            </h2>
+            <p class="mt-2 text-sm text-crema/75 max-w-2xl leading-relaxed">
+              Las propuestas registradas por el equipo de enlace permanecen en <em>revisión interna</em>. Una vez verificadas y autorizadas por la Diputada, pasan automáticamente al calendario público de la ciudadanía.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3 shrink-0 flex-wrap">
+            <button onclick="openNewProposalModal()" type="button" class="btn-primario text-xs px-5 py-3">
+              <span>+ Proponer Nueva Actividad</span>
+            </button>
+            <button onclick="loadAgendaData()" type="button" class="btn-fantasma text-xs px-4 py-3 text-crema border-white/20 hover:border-dorado">
+              ↻ Sincronizar
+            </button>
+            <button onclick="cerrarSesionDev()" type="button" class="btn-fantasma text-xs px-4 py-3 text-rose-300 border-rose-500/30 hover:border-rose-400 hover:bg-rose-950/40 inline-flex items-center gap-1.5" title="Cerrar sesión de trabajo">
+              <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+              <span>Cerrar sesión</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pestañas de la Consola Interna -->
+        <div class="mt-8 flex flex-wrap gap-x-8 gap-y-3 border-b border-white/15">
+          <button id="tab-pendientes-btn" onclick="switchDevTab('pendientes')" type="button" class="tab-filtro active text-dorado-claro border-dorado font-bold">
+            🟡 En Revisión (<span id="dev-count-pendientes">0</span>)
+          </button>
+          <button id="tab-aprobadas-btn" onclick="switchDevTab('aprobadas')" type="button" class="tab-filtro text-crema/70">
+            🟢 Aprobadas / En Agenda (<span id="dev-count-aprobadas">0</span>)
+          </button>
+          <button id="tab-rechazadas-btn" onclick="switchDevTab('rechazadas')" type="button" class="tab-filtro text-crema/70">
+            ⚪ Archivadas (<span id="dev-count-rechazadas">0</span>)
+          </button>
+        </div>
+
+        <!-- Lista de Propuestas para Evaluación -->
+        <div id="dev-propuestas-container" class="mt-8 space-y-4">
+          <!-- Inyectado por JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         VISTA PÚBLICA (Estilo Gaceta Editorial y Lista Oficial)
+         ============================================================== -->
+    <section class="bg-crema py-20 lg:py-28">
+      <div class="contenedor">
+        
+        <!-- Cabecera de la sección pública -->
+        <div class="flex flex-wrap items-end justify-between gap-6 pb-6 border-b border-hairline">
+          <div>
+            <p class="reveal label text-dorado">Actividades Oficiales</p>
+            <h2 class="reveal mt-3 font-display text-[clamp(30px,4.2vw,52px)] text-tinta">
+              Calendario y Audiencias
+            </h2>
+          </div>
+          
+          <div class="reveal flex flex-wrap items-center gap-4 text-sm text-tinta/65">
+            <p>
+              <span id="public-count-display" class="font-display text-3xl font-medium text-guinda">4</span> eventos en calendario
+            </p>
+            <span class="text-hairline hidden sm:inline">|</span>
+            <!-- Alternador de Vista (Lista Gaceta vs Tarjetas) -->
+            <div class="inline-flex rounded border border-hairline p-0.5 bg-white">
+              <button id="view-mode-list-btn" onclick="setPublicViewMode('list')" type="button" class="px-2.5 py-1 text-xs font-semibold rounded bg-guinda text-white cursor-pointer" title="Vista Lista Editorial">
+                ≡ Lista
+              </button>
+              <button id="view-mode-grid-btn" onclick="setPublicViewMode('grid')" type="button" class="px-2.5 py-1 text-xs font-semibold rounded text-tinta/60 hover:text-guinda cursor-pointer" title="Vista Tarjetas">
+                ⊞ Tarjetas
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtros tipo Pestañas Subrayadas (Estilo Trabajo Legislativo) -->
+        <div class="mt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-hairline">
+          <div class="flex items-center gap-6 overflow-x-auto pb-1 no-scrollbar" role="group" aria-label="Filtrar por eje">
+            <button type="button" data-cat="all" onclick="filterPublicCategory('all')" class="tab-filtro active">
+              Todas
+            </button>
+            <button type="button" data-cat="cultura" onclick="filterPublicCategory('cultura')" class="tab-filtro">
+              Cultura e Identidad
+            </button>
+            <button type="button" data-cat="salud" onclick="filterPublicCategory('salud')" class="tab-filtro">
+              Salud y Bienestar
+            </button>
+            <button type="button" data-cat="energia" onclick="filterPublicCategory('energia')" class="tab-filtro">
+              Comisión de Energía
+            </button>
+            <button type="button" data-cat="apoyo" onclick="filterPublicCategory('apoyo')" class="tab-filtro">
+              Gestión Social
+            </button>
+            <button type="button" data-cat="educacion" onclick="filterPublicCategory('educacion')" class="tab-filtro">
+              Educación
+            </button>
+          </div>
+
+          <!-- Buscador Editorial Integrado -->
+          <div class="w-full md:w-64 pb-3 md:pb-0">
+            <input id="public-search" oninput="handleSearch(this.value)" type="text" placeholder="Buscar por sede o tema..." class="w-full border border-hairline bg-white px-4 py-2 font-sans text-xs text-tinta placeholder:text-tinta/45 outline-none focus:border-guinda">
+          </div>
+        </div>
+
+        <!-- Contenedor de Actividades Públicas (Lista Editorial / Gaceta) -->
+        <div id="public-activities-container" class="mt-4 border-t border-hairline">
+          <!-- Inyectado por JS -->
+        </div>
+
+        <!-- Estado Vacío -->
+        <div id="public-empty" class="hidden py-16 text-center border-b border-hairline">
+          <p class="font-display text-2xl text-tinta">No hay actividades registradas para este criterio</p>
+          <p class="mt-2 text-sm text-tinta/60">Selecciona "Todas" o prueba con otra palabra clave de búsqueda.</p>
+          <button type="button" onclick="resetPublicFilters()" class="mt-6 btn-primario text-xs px-5 py-2.5">
+            Ver todas las actividades
+          </button>
+        </div>
+
+        <!-- Nota Institucional al pie de la lista -->
+        <div class="mt-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 pt-8 border-t border-hairline text-xs text-tinta/60">
+          <p class="max-w-2xl leading-relaxed">
+            * Los horarios y sedes están sujetos a confirmación por convocatorias del pleno de la Cámara de Diputados o condiciones logísticas en los municipios de Campeche.
+          </p>
+          <a href="/contacto" class="group inline-flex items-center gap-2 font-sans text-xs font-semibold text-guinda hover:underline shrink-0">
+            <span>Solicitar audiencia con la Diputada</span>
+            <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==============================================================
+       MODAL DE AUTENTICACIÓN (Acceso Equipo / Desarrollo)
+       ============================================================== -->
+  <div id="dev-login-modal" class="fixed inset-0 z-[90] hidden items-center justify-center bg-ciruela/80 backdrop-blur-sm p-4">
+    <div class="relative w-full max-w-md bg-white border border-hairline rounded-sm shadow-2xl p-8 lg:p-10">
+      
+      <button onclick="closeDevLoginModal()" type="button" class="absolute top-4 right-4 text-tinta/40 hover:text-tinta text-lg font-bold p-1 cursor-pointer">
+        ✕
+      </button>
+
+      <div class="flex items-center gap-2 mb-3">
+        <span class="label text-guinda">Consola Parlamentaria</span>
+      </div>
+
+      <h3 class="font-display text-2xl text-tinta">Acceso de Coordinación</h3>
+      <p class="mt-2 text-xs leading-relaxed text-tinta/70">
+        Ingreso exclusivo para el equipo legislativo y territorial para la postulación y validación de actividades de agenda.
+      </p>
+
+      <form onsubmit="handleDevLogin(event)" class="mt-6 space-y-4">
+        <div>
+          <label class="block label text-tinta/70 mb-1" for="login-usuario">Usuario o Alias</label>
+          <input id="login-usuario" type="text" required placeholder="Ingresa tu usuario" class="w-full border border-hairline bg-crema px-3.5 py-2.5 text-xs text-tinta outline-none focus:border-guinda">
+        </div>
+
+        <div>
+          <label class="block label text-tinta/70 mb-1" for="login-clave">Contraseña de Validación</label>
+          <input id="login-clave" type="password" required placeholder="••••••••" class="w-full border border-hairline bg-crema px-3.5 py-2.5 text-xs text-tinta outline-none focus:border-guinda">
+        </div>
+
+        <div id="login-error-msg" class="hidden p-2.5 rounded bg-red-50 text-red-800 text-xs border border-red-200"></div>
+
+        <button type="submit" class="btn-primario w-full justify-center py-3 text-xs uppercase tracking-wider font-semibold">
+          Acceder a la Consola
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==============================================================
+       MODAL PARA PROPONER NUEVA ACTIVIDAD (Para el equipo)
+       ============================================================== -->
+  <div id="new-proposal-modal" class="fixed inset-0 z-[95] hidden items-center justify-center bg-ciruela/85 backdrop-blur-sm p-4 overflow-y-auto">
+    <div class="relative w-full max-w-xl bg-white border border-hairline rounded-sm shadow-2xl p-8 lg:p-10 my-8">
+      
+      <button onclick="closeNewProposalModal()" type="button" class="absolute top-4 right-4 text-tinta/40 hover:text-tinta text-lg font-bold p-1 cursor-pointer">
+        ✕
+      </button>
+
+      <p class="label text-dorado">Equipo de Enlace y Territorio</p>
+      <h3 class="mt-2 font-display text-2xl text-tinta">Registrar Propuesta de Actividad</h3>
+      <p class="mt-1 text-xs text-tinta/70 leading-relaxed">
+        Ingresa los datos del evento propuesto. Se guardará en estado <strong>Pendiente de Aprobación</strong> hasta que la Diputada lo autorice e incorpore a la agenda pública.
+      </p>
+
+      <form onsubmit="handleCreateProposal(event)" class="mt-6 space-y-4 text-xs">
+        <div>
+          <label class="block label text-tinta/70 mb-1" for="prop-titulo">Título del Evento o Actividad *</label>
+          <input id="prop-titulo" type="text" required placeholder="ej. Asistencia a ceremonia cívica en Escuela Primaria Benito Juárez" class="w-full border border-hairline bg-crema px-3.5 py-2.5 text-tinta outline-none focus:border-guinda">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block label text-tinta/70 mb-1" for="prop-categoria">Eje de Trabajo *</label>
+            <select id="prop-categoria" class="w-full border border-hairline bg-crema px-3.5 py-2.5 text-tinta outline-none focus:border-guinda">
+              <option value="educacion">Educación y Escuelas</option>
+              <option value="cultura">Cultura e Identidad</option>
+              <option value="salud">Salud y Bienestar</option>
+              <option value="energia">Comisión de Energía</option>
+              <option value="apoyo">Gestión Social y Territorio</option>
+              <option value="campo">Pesca y Campo</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block label text-tinta/70 mb-1" for="prop-municipio">Municipio *</label>
+            <select id="prop-municipio" class="w-full border border-hairline bg-crema px-3.5 py-2.5 text-tinta outline-none focus:border-guinda">
+              <option value="Campeche">San Francisco de Campeche</option>
+              <option value="Carmen">Ciudad del Carmen</option>
+              <option value="Champotón">Champotón</option>
+              <option value="Escárcega">Escárcega</option>
+              <option value="Candelaria">Candelaria</option>
+              <option value="Hecelchakán">Hecelchakán</option>
+              <option value="Calkiní">Calkiní</option>
+              <option value="CDMX">Cámara de Diputados (San Lázaro)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block label text-tinta/70 mb-1" for="prop-fecha">Fecha Sugerida *</label>
+            <input id="prop-fecha" type="date" required class="w-full border border-hairline bg-crema px-3.5 py-2.5 text-tinta outline-none focus:border-guinda">
+          </div>
+
+          <div>
+            <label class="block label text-tinta/70 mb-1" for="prop-hora">Hora sugerida</label>
+            <input id="prop-hora" type="time" value="10:00" class="w-full border border-hairline bg-crema px-3.5 py-2.5 text-tinta outline-none focus:border-guinda">
+          </div>
+        </div>
+
+        <div>
+          <label class="block label text-tinta/70 mb-1" for="prop-lugar">Sede o Ubicación Concreta *</label>
+          <input id="prop-lugar" type="text" required placeholder="ej. Museo de la Ciudad / Domo de la colonia Morelos / Salón de Plenos" class="w-full border border-hairline bg-crema px-3.5 py-2.5 text-tinta outline-none focus:border-guinda">
+        </div>
+
+        <div>
+          <label class="block label text-tinta/70 mb-1" for="prop-descripcion">Detalles y Justificación *</label>
+          <textarea id="prop-descripcion" rows="3" required placeholder="Explica los antecedentes, comités convocantes y el beneficio para la ciudadanía..." class="w-full border border-hairline bg-crema px-3.5 py-2.5 text-tinta outline-none focus:border-guinda"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block label text-tinta/70 mb-1" for="prop-responsable">Responsable de Propuesta</label>
+            <input id="prop-responsable" type="text" placeholder="ej. Coordinación de Enlace Escolar" class="w-full border border-hairline bg-crema px-3.5 py-2.5 text-tinta outline-none focus:border-guinda">
+          </div>
+
+          <div>
+            <label class="block label text-tinta/70 mb-1" for="prop-relevancia">Prioridad Institucional</label>
+            <select id="prop-relevancia" class="w-full border border-hairline bg-crema px-3.5 py-2.5 text-tinta outline-none focus:border-guinda">
+              <option value="Alta">Alta Prioridad</option>
+              <option value="Media">Prioridad Ordinaria</option>
+              <option value="Estratégica">Estratégica / Presidencial</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-hairline">
+          <button type="button" onclick="closeNewProposalModal()" class="btn-editorial">Cancelar</button>
+          <button type="submit" class="btn-primario text-xs">Enviar a Revisión →</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==============================================================
+       FOOTER OFICIAL
+       ============================================================== -->
+  <footer class="bg-tinta text-crema/80">
+    <div class="contenedor grid gap-12 py-20 md:grid-cols-12 md:gap-8">
+      <div class="md:col-span-5">
+        <p class="font-display text-3xl font-medium text-crema" style="letter-spacing:-0.02em">
+          Rocío Adriana Abreu Artiñano
+        </p>
+        <p class="mt-4 max-w-sm text-sm leading-relaxed text-crema/60">
+          Diputada Federal · LXVI Legislatura. Presidenta de la Comisión de Energía de la Cámara de Diputados.
+        </p>
+      </div>
+
+      <nav class="md:col-span-3" aria-label="Navegación del pie de página">
+        <p class="label">Secciones</p>
+        <ul class="mt-4 space-y-3">
+          <li><a href="/" class="text-sm text-crema/80 hover:text-crema">Inicio</a></li>
+          <li><a href="/trayectoria" class="text-sm text-crema/80 hover:text-crema">Trayectoria</a></li>
+          <li><a href="/trabajo-legislativo" class="text-sm text-crema/80 hover:text-crema">Trabajo legislativo</a></li>
+          <li><a href="/gestion" class="text-sm text-crema/80 hover:text-crema">Gestión y apoyos</a></li>
+          <li><a href="/agenda/" class="text-sm text-dorado font-bold hover:text-crema">Agenda digital</a></li>
+          <li><a href="/contacto" class="text-sm text-crema/80 hover:text-crema">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="md:col-span-4">
+        <p class="label">Contacto</p>
+        <a href="mailto:rocio.abreu@diputados.gob.mx" class="mt-4 block text-sm text-crema/80 hover:text-crema">
+          rocio.abreu@diputados.gob.mx
+        </a>
+        <ul class="mt-6 space-y-3">
+          <li>
+            <a href="https://www.facebook.com/RocioAbreuA" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 text-sm text-crema/80 hover:text-crema">
+              <span>Facebook</span>
+              <span class="text-crema/40">@RocioAbreuA</span>
+              <span class="text-dorado transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://x.com/RocioAbreuA" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 text-sm text-crema/80 hover:text-crema">
+              <span>X</span>
+              <span class="text-crema/40">@RocioAbreuA</span>
+              <span class="text-dorado transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/rocioabreua" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 text-sm text-crema/80 hover:text-crema">
+              <span>Instagram</span>
+              <span class="text-crema/40">@rocioabreua</span>
+              <span class="text-dorado transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+
+        <div id="footer-session-area" class="mt-8 pt-4 border-t border-white/10">
+          <button onclick="openDevLoginModal()" type="button" class="text-xs text-dorado hover:text-dorado-claro inline-flex items-center gap-1.5 cursor-pointer">
+            <span>🔒 Acceso de Equipo y Validación</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10">
+      <div class="contenedor flex flex-col gap-3 py-6 text-xs text-crema/50 md:flex-row md:items-center md:justify-between">
+        <p class="max-w-2xl leading-relaxed">
+          Este sitio informa sobre la labor legislativa y de gestión de la Diputada Federal Rocío Adriana Abreu Artiñano. La información oficial de la Cámara de Diputados puede consultarse en diputados.gob.mx.
+        </p>
+        <div class="flex shrink-0 items-center gap-5">
+          <a href="/aviso-de-privacidad" class="hover:text-crema">Aviso de privacidad</a>
+          <span>© 2026</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==============================================================
+       LÓGICA JAVASCRIPT: OBSERVER, API Y VISTA EDITORIAL
+       ============================================================== -->
+  <script>
+    let allActivities = [];
+    let activeCategory = 'all';
+    let searchQuery = '';
+    let currentDevTab = 'pendientes';
+    let publicViewMode = 'list'; // 'list' o 'grid'
+    let currentUser = null;
+
+    const CATEGORY_MAP = {
+      cultura: 'Cultura e Identidad',
+      salud: 'Salud y Bienestar',
+      energia: 'Comisión de Energía',
+      apoyo: 'Gestión Social',
+      educacion: 'Educación y Escuelas',
+      campo: 'Pesca y Campo',
+      territorio: 'Territorio y Comunidad'
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initScrollReveal();
+      checkSession();
+      loadAgendaData();
+      initKeyboardShortcut();
+
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('dev') === 'true' && !currentUser) {
+        openDevLoginModal();
+      }
+    });
+
+    // IntersectionObserver idéntico al del portal
+    function initScrollReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    function initKeyboardShortcut() {
+      document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.shiftKey && (e.key === 'D' || e.key === 'd')) {
+          e.preventDefault();
+          if (currentUser) {
+            toggleDevPanel();
+          } else {
+            openDevLoginModal();
+          }
+        }
+      });
+    }
+
+    function checkSession() {
+      const stored = localStorage.getItem('rocio_agenda_user');
+      if (stored) {
+        try {
+          currentUser = JSON.parse(stored);
+          updateSessionUI();
+        } catch (e) {
+          localStorage.removeItem('rocio_agenda_user');
+        }
+      }
+    }
+
+    function updateSessionUI() {
+      const bar = document.getElementById('dev-admin-bar');
+      const panel = document.getElementById('dev-management-panel');
+      const userName = document.getElementById('dev-user-name');
+      const userRole = document.getElementById('dev-user-role');
+      const roleBadge = document.getElementById('role-badge');
+
+      // Desktop header
+      const headerBtn = document.getElementById('header-dev-login-btn');
+      const headerSessionGroup = document.getElementById('header-session-group');
+      const headerUserAlias = document.getElementById('header-user-alias');
+
+      // Mobile header
+      const mobileLoginBtn = document.getElementById('mobile-dev-login-btn');
+      const mobileSessionGroup = document.getElementById('mobile-session-group');
+      const mobileUserAlias = document.getElementById('mobile-user-alias');
+
+      // Menú móvil desplegable
+      const menuMovilSessionBox = document.getElementById('menu-movil-session-box');
+      const menuMovilLoginBox = document.getElementById('menu-movil-login-box');
+      const menuMovilUsername = document.getElementById('menu-movil-username');
+
+      // Footer
+      const footerSessionArea = document.getElementById('footer-session-area');
+
+      if (currentUser) {
+        if (bar) bar.classList.remove('hidden');
+        if (panel) panel.classList.remove('hidden');
+        if (userName) userName.textContent = currentUser.nombre || currentUser.alias;
+        if (userRole) userRole.textContent = currentUser.rolLabel || currentUser.rol;
+        if (roleBadge) roleBadge.textContent = currentUser.rol === 'diputada' ? 'Diputada (Aprobación)' : 'Equipo de Enlace';
+
+        // Desktop header
+        if (headerBtn) headerBtn.classList.add('hidden');
+        if (headerSessionGroup) {
+          headerSessionGroup.classList.remove('hidden');
+          headerSessionGroup.classList.add('inline-flex');
+        }
+        if (headerUserAlias) headerUserAlias.textContent = (currentUser.rol === 'diputada' ? '👑 ' : '👤 ') + (currentUser.alias || 'Equipo');
+
+        // Mobile header
+        if (mobileLoginBtn) mobileLoginBtn.classList.add('hidden');
+        if (mobileSessionGroup) {
+          mobileSessionGroup.classList.remove('hidden');
+          mobileSessionGroup.classList.add('inline-flex');
+        }
+        if (mobileUserAlias) mobileUserAlias.textContent = (currentUser.rol === 'diputada' ? '👑 ' : '👤 ') + (currentUser.alias || 'Equipo');
+
+        // Menú móvil desplegable
+        if (menuMovilSessionBox) menuMovilSessionBox.classList.remove('hidden');
+        if (menuMovilLoginBox) menuMovilLoginBox.classList.add('hidden');
+        if (menuMovilUsername) menuMovilUsername.textContent = (currentUser.nombre || currentUser.alias) + ' (' + (currentUser.rolLabel || currentUser.rol) + ')';
+
+        // Footer
+        if (footerSessionArea) {
+          footerSessionArea.innerHTML = `
+            <div class="flex flex-wrap items-center justify-between gap-3 text-xs text-crema/75">
+              <span class="flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                <span>Sesión activa: <strong class="text-white">${currentUser.nombre || currentUser.alias}</strong> (${currentUser.rolLabel || currentUser.rol})</span>
+              </span>
+              <button onclick="cerrarSesionDev()" type="button" class="text-rose-400 hover:text-rose-300 font-semibold underline underline-offset-2 flex items-center gap-1 cursor-pointer">
+                <span>Cerrar sesión</span>
+              </button>
+            </div>
+          `;
+        }
+      } else {
+        if (bar) bar.classList.add('hidden');
+        if (panel) panel.classList.add('hidden');
+
+        // Desktop header
+        if (headerBtn) headerBtn.classList.remove('hidden');
+        if (headerSessionGroup) {
+          headerSessionGroup.classList.add('hidden');
+          headerSessionGroup.classList.remove('inline-flex');
+        }
+
+        // Mobile header
+        if (mobileLoginBtn) mobileLoginBtn.classList.remove('hidden');
+        if (mobileSessionGroup) {
+          mobileSessionGroup.classList.add('hidden');
+          mobileSessionGroup.classList.remove('inline-flex');
+        }
+
+        // Menú móvil desplegable
+        if (menuMovilSessionBox) menuMovilSessionBox.classList.add('hidden');
+        if (menuMovilLoginBox) menuMovilLoginBox.classList.remove('hidden');
+
+        // Footer
+        if (footerSessionArea) {
+          footerSessionArea.innerHTML = `
+            <button onclick="openDevLoginModal()" type="button" class="text-xs text-dorado hover:text-dorado-claro inline-flex items-center gap-1.5 cursor-pointer">
+              <span>🔒 Acceso de Equipo y Validación</span>
+            </button>
+          `;
+        }
+      }
+    }
+
+    async function loadAgendaData() {
+      try {
+        const res = await fetch('/api/agenda');
+        if (res.ok) {
+          const data = await res.json();
+          allActivities = data.items || [];
+        } else {
+          throw new Error('API offline');
+        }
+      } catch (err) {
+        const local = localStorage.getItem('rocio_agenda_local_data');
+        if (local) {
+          allActivities = JSON.parse(local);
+        }
+      }
+
+      renderPublicActivities();
+      if (currentUser) {
+        renderDevPanel();
+      }
+      updateCounters();
+    }
+
+    function updateCounters() {
+      const confirmados = allActivities.filter(a => a.estado === 'aprobado' && a.publico).length;
+      const pendientes = allActivities.filter(a => a.estado === 'pendiente').length;
+      const rechazadas = allActivities.filter(a => a.estado === 'rechazado').length;
+
+      const heroStat = document.getElementById('hero-stat-confirmados');
+      if (heroStat) heroStat.textContent = confirmados;
+
+      const publicDisplay = document.getElementById('public-count-display');
+      if (publicDisplay) publicDisplay.textContent = confirmados;
+
+      const devPendientes = document.getElementById('dev-count-pendientes');
+      if (devPendientes) devPendientes.textContent = pendientes;
+
+      const devAprobadas = document.getElementById('dev-count-aprobadas');
+      if (devAprobadas) devAprobadas.textContent = confirmados;
+
+      const devRechazadas = document.getElementById('dev-count-rechazadas');
+      if (devRechazadas) devRechazadas.textContent = rechazadas;
+    }
+
+    // ==============================================================
+    // RENDER PÚBLICO (Gaceta Editorial & Tarjetas)
+    // ==============================================================
+    function renderPublicActivities() {
+      const container = document.getElementById('public-activities-container');
+      const emptyState = document.getElementById('public-empty');
+
+      let items = allActivities.filter(a => a.estado === 'aprobado' && a.publico);
+
+      if (activeCategory !== 'all') {
+        items = items.filter(a => a.categoria === activeCategory);
+      }
+
+      if (searchQuery.trim() !== '') {
+        const q = searchQuery.toLowerCase();
+        items = items.filter(a =>
+          a.titulo.toLowerCase().includes(q) ||
+          a.descripcion.toLowerCase().includes(q) ||
+          a.lugar.toLowerCase().includes(q) ||
+          a.municipio.toLowerCase().includes(q)
+        );
+      }
+
+      items.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+
+      if (items.length === 0) {
+        container.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      if (publicViewMode === 'list') {
+        // VISTA GACETA EDITORIAL (Inspirada en Trabajo Legislativo)
+        container.className = 'mt-4 border-t border-hairline';
+        container.innerHTML = items.map((item, idx) => {
+          const d = new Date(item.fecha + 'T00:00:00');
+          const dia = d.getDate();
+          const mes = d.toLocaleDateString('es-MX', { month: 'long' });
+          const anio = d.getFullYear();
+          const calendarUrl = getCalendarUrl(item);
+
+          return `
+            <article class="gaceta-row group border-b border-hairline py-8 px-4 transition-colors">
+              <div class="grid gap-6 md:grid-cols-[14rem_1fr_13rem] md:items-start md:gap-10">
+                
+                <!-- Columna 1: Fecha y Folio Editorial -->
+                <div>
+                  <div class="flex items-baseline gap-2">
+                    <span class="font-display text-4xl font-medium text-guinda">${dia}</span>
+                    <span class="font-sans text-xs uppercase tracking-[0.1em] text-tinta/70 font-semibold">${mes} ${anio}</span>
+                  </div>
+                  <p class="mt-2 flex items-center gap-1.5 text-xs text-tinta/60 font-sans">
+                    <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>${item.hora || '10:00'} hrs</span>
+                  </p>
+                  <p class="mt-1 flex items-center gap-1.5 text-xs font-semibold text-dorado font-sans uppercase tracking-wider">
+                    <span>📍 ${escapeHtml(item.municipio)}</span>
+                  </p>
+                </div>
+
+                <!-- Columna 2: Contenido y Título -->
+                <div>
+                  <div class="flex flex-wrap items-center gap-2 mb-2">
+                    <span class="pill-tag">${item.categoriaLabel || CATEGORY_MAP[item.categoria] || 'General'}</span>
+                    <span class="inline-flex items-center gap-1 text-[11px] font-sans font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 border border-emerald-200">
+                      <span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+                      Confirmada
+                    </span>
+                  </div>
+
+                  <h3 class="font-display text-2xl leading-snug text-tinta transition-colors group-hover:text-guinda">
+                    ${escapeHtml(item.titulo)}
+                  </h3>
+
+                  <p class="mt-3 max-w-lectura text-sm leading-relaxed text-tinta/70 font-sans">
+                    ${escapeHtml(item.descripcion)}
+                  </p>
+
+                  <p class="mt-3 text-xs text-tinta/80 font-sans flex items-center gap-1.5">
+                    <strong>Sede:</strong> <span>${escapeHtml(item.lugar)}</span>
+                  </p>
+                </div>
+
+                <!-- Columna 3: Acciones -->
+                <div class="flex flex-col items-start md:items-end justify-between h-full pt-1">
+                  <a href="${calendarUrl}" target="_blank" rel="noopener noreferrer" class="group/btn inline-flex items-center gap-2 font-sans text-xs font-semibold text-guinda hover:underline">
+                    <span>Agendar en Google</span>
+                    <span class="transition-transform duration-200 group-hover/btn:translate-x-1">→</span>
+                  </a>
+
+                  <button type="button" onclick="shareActivity('${escapeHtml(item.titulo)}', '${item.fecha}')" class="mt-4 text-[11px] uppercase tracking-wider text-tinta/50 hover:text-tinta font-semibold cursor-pointer">
+                    Compartir ↗
+                  </button>
+                </div>
+
+              </div>
+            </article>
+          `;
+        }).join('');
+      } else {
+        // VISTA CUADRÍCULA (Estilo Tarjetas Territoriales)
+        container.className = 'mt-8 grid gap-8 md:grid-cols-2';
+        container.innerHTML = items.map(item => {
+          const d = new Date(item.fecha + 'T00:00:00');
+          const dia = d.getDate();
+          const mes = d.toLocaleDateString('es-MX', { month: 'short' }).toUpperCase();
+          const anio = d.getFullYear();
+          const calendarUrl = getCalendarUrl(item);
+
+          return `
+            <article class="bg-white border border-hairline p-8 flex flex-col justify-between transition-all hover:border-guinda/40 hover:shadow-lg">
+              <div>
+                <div class="flex items-center justify-between pb-4 border-b border-hairline">
+                  <span class="pill-tag">${item.categoriaLabel || CATEGORY_MAP[item.categoria] || 'General'}</span>
+                  <span class="text-xs font-semibold text-guinda font-sans">${item.municipio}</span>
+                </div>
+
+                <div class="mt-5 flex items-baseline gap-3">
+                  <span class="font-display text-4xl text-guinda">${dia}</span>
+                  <div>
+                    <span class="font-sans text-xs uppercase tracking-wider font-bold text-tinta">${mes} ${anio}</span>
+                    <p class="text-xs text-tinta/50 font-sans">${item.hora || '10:00'} hrs</p>
+                  </div>
+                </div>
+
+                <h3 class="mt-4 font-display text-2xl leading-snug text-tinta">
+                  ${escapeHtml(item.titulo)}
+                </h3>
+
+                <p class="mt-3 text-sm leading-relaxed text-tinta/70 font-sans">
+                  ${escapeHtml(item.descripcion)}
+                </p>
+
+                <p class="mt-4 text-xs text-tinta/80 font-sans border-t border-hairline pt-3">
+                  📍 <strong>Lugar:</strong> ${escapeHtml(item.lugar)}
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-hairline flex items-center justify-between">
+                <a href="${calendarUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 font-sans text-xs font-semibold text-guinda hover:underline">
+                  <span>Agendar evento</span>
+                  <span class="transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </a>
+                <button type="button" onclick="shareActivity('${escapeHtml(item.titulo)}', '${item.fecha}')" class="text-xs text-tinta/50 hover:text-tinta cursor-pointer">
+                  Compartir ↗
+                </button>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+    }
+
+    function setPublicViewMode(mode) {
+      publicViewMode = mode;
+      const listBtn = document.getElementById('view-mode-list-btn');
+      const gridBtn = document.getElementById('view-mode-grid-btn');
+
+      if (mode === 'list') {
+        listBtn.className = 'px-2.5 py-1 text-xs font-semibold rounded bg-guinda text-white cursor-pointer';
+        gridBtn.className = 'px-2.5 py-1 text-xs font-semibold rounded text-tinta/60 hover:text-guinda cursor-pointer';
+      } else {
+        gridBtn.className = 'px-2.5 py-1 text-xs font-semibold rounded bg-guinda text-white cursor-pointer';
+        listBtn.className = 'px-2.5 py-1 text-xs font-semibold rounded text-tinta/60 hover:text-guinda cursor-pointer';
+      }
+
+      renderPublicActivities();
+    }
+
+    function filterPublicCategory(cat) {
+      activeCategory = cat;
+      document.querySelectorAll('.tab-filtro').forEach(btn => {
+        if (btn.getAttribute('data-cat') === cat) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      renderPublicActivities();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val;
+      renderPublicActivities();
+    }
+
+    function resetPublicFilters() {
+      searchQuery = '';
+      document.getElementById('public-search').value = '';
+      filterPublicCategory('all');
+    }
+
+    function getCalendarUrl(item) {
+      const title = encodeURIComponent(item.titulo + ' · Rocío Abreu');
+      const details = encodeURIComponent(item.descripcion + '\n\nOrganizado por la oficina de la Dip. Rocío Adriana Abreu Artiñano.');
+      const location = encodeURIComponent(item.lugar + ', ' + item.municipio + ', Campeche');
+      const cleanDate = item.fecha.replace(/-/g, '');
+      const cleanTime = (item.hora || '10:00').replace(':', '') + '00';
+      const dates = `${cleanDate}T${cleanTime}/${cleanDate}T${cleanTime}`;
+      return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}`;
+    }
+
+    function shareActivity(titulo, fecha) {
+      if (navigator.share) {
+        navigator.share({
+          title: titulo,
+          text: `Acompaña a la Diputada Rocío Abreu: ${titulo} (${fecha})`,
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(`${titulo} — Agenda de Rocío Abreu: ${window.location.href}`);
+        alert('Enlace copiado al portapapeles.');
+      }
+    }
+
+    // ==============================================================
+    // CONSOLA INTERNA (Para el equipo y la Diputada)
+    // ==============================================================
+    function switchDevTab(tab) {
+      currentDevTab = tab;
+      const tabs = ['pendientes', 'aprobadas', 'rechazadas'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-${t}-btn`);
+        if (t === tab) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      renderDevPanel();
+    }
+
+    function renderDevPanel() {
+      const container = document.getElementById('dev-propuestas-container');
+      if (!container) return;
+
+      let list = [];
+      if (currentDevTab === 'pendientes') {
+        list = allActivities.filter(a => a.estado === 'pendiente');
+      } else if (currentDevTab === 'aprobadas') {
+        list = allActivities.filter(a => a.estado === 'aprobado');
+      } else {
+        list = allActivities.filter(a => a.estado === 'rechazado');
+      }
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="border border-white/10 bg-white/5 p-8 text-center rounded">
+            <p class="font-display text-lg text-crema">No hay propuestas en la bandeja (${currentDevTab})</p>
+            <p class="text-xs text-crema/60 mt-1">Usa el botón "+ Proponer Actividad" para registrar una nueva opción.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const isDiputadaOrAdmin = currentUser && (currentUser.rol === 'diputada' || currentUser.rol === 'admin');
+
+      container.innerHTML = list.map(item => {
+        return `
+          <div class="border border-white/10 bg-white/5 hover:bg-white/10 p-6 transition flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div class="max-w-2xl">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${item.estado === 'aprobado' ? 'bg-emerald-950 text-emerald-300 border border-emerald-700' : 'bg-amber-950 text-amber-300 border border-amber-700'}">
+                  ${item.estado.toUpperCase()}
+                </span>
+                <span class="text-xs font-semibold text-dorado uppercase tracking-wide">${item.categoriaLabel || CATEGORY_MAP[item.categoria] || item.categoria}</span>
+                <span class="text-white/20">•</span>
+                <span class="text-xs text-crema/70">Municipio: <strong>${escapeHtml(item.municipio)}</strong></span>
+                <span class="text-white/20">•</span>
+                <span class="text-xs text-crema/70">Prioridad: <strong>${item.relevancia || 'Ordinaria'}</strong></span>
+              </div>
+
+              <h4 class="font-display text-xl text-white">
+                ${escapeHtml(item.titulo)}
+              </h4>
+
+              <p class="text-xs leading-relaxed text-crema/75 mt-2 font-sans">
+                ${escapeHtml(item.descripcion)}
+              </p>
+
+              <div class="mt-4 flex flex-wrap items-center gap-4 text-xs text-crema/60 font-sans">
+                <span>📅 <strong>Fecha sugerida:</strong> ${item.fecha} (${item.hora || '10:00'} hrs)</span>
+                <span>📍 <strong>Lugar:</strong> ${escapeHtml(item.lugar)}</span>
+                <span>👤 <strong>Propuesto por:</strong> <span class="text-dorado-claro">${escapeHtml(item.propuestoPor || 'Equipo')}</span></span>
+              </div>
+            </div>
+
+            <div class="shrink-0 flex flex-wrap md:flex-col items-end gap-2 border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-6">
+              ${item.estado === 'pendiente' ? `
+                ${isDiputadaOrAdmin ? `
+                  <button onclick="aprobarPropuesta('${item.id}')" type="button" class="btn-primario text-xs px-4 py-2 w-full justify-center bg-emerald-700 hover:bg-emerald-800">
+                    ✓ Autorizar y Publicar
+                  </button>
+                  <button onclick="rechazarPropuesta('${item.id}')" type="button" class="btn-fantasma text-xs px-4 py-2 w-full justify-center text-red-300 border-red-500/30 hover:bg-red-950/40">
+                    ✕ Descartar
+                  </button>
+                ` : `
+                  <span class="text-[11px] text-amber-300/80 italic text-right font-sans">
+                    🟡 En espera de revisión por la Diputada
+                  </span>
+                `}
+              ` : ''}
+
+              ${item.estado === 'aprobado' ? `
+                <div class="flex flex-col items-end gap-1.5 w-full">
+                  <span class="text-xs text-emerald-400 font-semibold flex items-center gap-1">
+                    ✓ Activa en Agenda Pública
+                  </span>
+                  ${isDiputadaOrAdmin ? `
+                    <button onclick="despublicarPropuesta('${item.id}')" type="button" class="text-[11px] text-crema/50 hover:text-red-300 underline cursor-pointer">
+                      Despublicar a borrador
+                    </button>
+                  ` : ''}
+                </div>
+              ` : ''}
+
+              ${item.estado === 'rechazado' && isDiputadaOrAdmin ? `
+                <button onclick="reconsiderarPropuesta('${item.id}')" type="button" class="btn-fantasma text-xs px-3 py-1.5 text-crema border-white/20 hover:border-dorado">
+                  Reactivar propuesta
+                </button>
+              ` : ''}
+
+              ${isDiputadaOrAdmin ? `
+                <button onclick="eliminarActividad('${item.id}')" type="button" class="text-[11px] text-red-400/50 hover:text-red-300 pt-1 cursor-pointer">
+                  Eliminar registro
+                </button>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function aprobarPropuesta(id) {
+      if (!confirm('¿Deseas autorizar esta actividad e implementarla inmediatamente en la Agenda Pública para todos los ciudadanos?')) return;
+
+      try {
+        const res = await fetch(`/api/agenda/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            estado: 'aprobado',
+            publico: true,
+            aprobadoPor: currentUser ? currentUser.nombre : 'Diputada Rocío Abreu'
+          })
+        });
+
+        if (res.ok) {
+          await loadAgendaData();
+          alert('¡Actividad autorizada! Ya se encuentra en el calendario público oficial.');
+        } else {
+          throw new Error('Error en API');
+        }
+      } catch (err) {
+        const item = allActivities.find(a => a.id === id);
+        if (item) {
+          item.estado = 'aprobado';
+          item.publico = true;
+          item.aprobadoPor = currentUser ? currentUser.nombre : 'Diputada Rocío Abreu';
+          localStorage.setItem('rocio_agenda_local_data', JSON.stringify(allActivities));
+          renderPublicActivities();
+          renderDevPanel();
+          updateCounters();
+        }
+      }
+    }
+
+    async function rechazarPropuesta(id) {
+      const motivo = prompt('Motivo del descarte u observaciones (opcional):', 'Conflicto de comisiones en San Lázaro');
+      if (motivo === null) return;
+
+      try {
+        await fetch(`/api/agenda/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ estado: 'rechazado', publico: false, motivoRechazo: motivo })
+        });
+      } catch (e) {
+        const item = allActivities.find(a => a.id === id);
+        if (item) {
+          item.estado = 'rechazado';
+          item.publico = false;
+          localStorage.setItem('rocio_agenda_local_data', JSON.stringify(allActivities));
+        }
+      }
+      await loadAgendaData();
+    }
+
+    async function despublicarPropuesta(id) {
+      if (!confirm('¿Deseas retirar esta actividad del calendario público?')) return;
+      try {
+        await fetch(`/api/agenda/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ estado: 'pendiente', publico: false })
+        });
+      } catch (e) {
+        const item = allActivities.find(a => a.id === id);
+        if (item) {
+          item.estado = 'pendiente';
+          item.publico = false;
+          localStorage.setItem('rocio_agenda_local_data', JSON.stringify(allActivities));
+        }
+      }
+      await loadAgendaData();
+    }
+
+    async function reconsiderarPropuesta(id) {
+      try {
+        await fetch(`/api/agenda/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ estado: 'pendiente', publico: false })
+        });
+      } catch (e) {
+        const item = allActivities.find(a => a.id === id);
+        if (item) {
+          item.estado = 'pendiente';
+          item.publico = false;
+          localStorage.setItem('rocio_agenda_local_data', JSON.stringify(allActivities));
+        }
+      }
+      await loadAgendaData();
+    }
+
+    async function eliminarActividad(id) {
+      if (!confirm('¿Eliminar permanentemente este registro?')) return;
+      try {
+        await fetch(`/api/agenda/${id}`, { method: 'DELETE' });
+      } catch (e) {
+        allActivities = allActivities.filter(a => a.id !== id);
+        localStorage.setItem('rocio_agenda_local_data', JSON.stringify(allActivities));
+      }
+      await loadAgendaData();
+    }
+
+    async function handleCreateProposal(e) {
+      e.preventDefault();
+
+      const titulo = document.getElementById('prop-titulo').value.trim();
+      const categoria = document.getElementById('prop-categoria').value;
+      const municipio = document.getElementById('prop-municipio').value;
+      const fecha = document.getElementById('prop-fecha').value;
+      const hora = document.getElementById('prop-hora').value;
+      const lugar = document.getElementById('prop-lugar').value.trim();
+      const descripcion = document.getElementById('prop-descripcion').value.trim();
+      const responsable = document.getElementById('prop-responsable').value.trim() || (currentUser ? currentUser.nombre : 'Equipo de Enlace');
+      const relevancia = document.getElementById('prop-relevancia').value;
+
+      const payload = {
+        titulo,
+        categoria,
+        categoriaLabel: CATEGORY_MAP[categoria] || categoria,
+        municipio,
+        fecha,
+        hora,
+        lugar,
+        descripcion,
+        propuestoPor: responsable,
+        relevancia,
+        estado: 'pendiente',
+        publico: false
+      };
+
+      try {
+        const res = await fetch('/api/agenda', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          alert('Propuesta enviada a la bandeja de revisión de la Diputada.');
+          closeNewProposalModal();
+          e.target.reset();
+          await loadAgendaData();
+        } else {
+          throw new Error('API error');
+        }
+      } catch (err) {
+        const newItem = {
+          id: 'act-' + Date.now(),
+          ...payload,
+          fechaPropuesta: new Date().toISOString().split('T')[0]
+        };
+        allActivities.unshift(newItem);
+        localStorage.setItem('rocio_agenda_local_data', JSON.stringify(allActivities));
+        alert('Propuesta guardada localmente.');
+        closeNewProposalModal();
+        e.target.reset();
+        renderDevPanel();
+        updateCounters();
+      }
+    }
+
+    // Modales y Credenciales
+    function openDevLoginModal() {
+      document.getElementById('dev-login-modal').classList.remove('hidden');
+      document.getElementById('dev-login-modal').classList.add('flex');
+    }
+
+    function closeDevLoginModal() {
+      document.getElementById('dev-login-modal').classList.add('hidden');
+      document.getElementById('dev-login-modal').classList.remove('flex');
+      document.getElementById('login-error-msg').classList.add('hidden');
+    }
+
+    async function handleDevLogin(e) {
+      e.preventDefault();
+      const usuario = document.getElementById('login-usuario').value.trim();
+      const clave = document.getElementById('login-clave').value.trim();
+      const errorMsg = document.getElementById('login-error-msg');
+
+      try {
+        const res = await fetch('/api/auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ usuario, clave })
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          currentUser = data.user;
+          localStorage.setItem('rocio_agenda_user', JSON.stringify(currentUser));
+          closeDevLoginModal();
+          updateSessionUI();
+          renderDevPanel();
+          updateCounters();
+        } else {
+          errorMsg.textContent = data.message || 'Credenciales no autorizadas';
+          errorMsg.classList.remove('hidden');
+        }
+      } catch (err) {
+        if ((usuario === 'equipo' || usuario === 'equipo@rocioabreu.mx') && clave === 'equipo2026') {
+          currentUser = { usuario: 'equipo', alias: 'equipo', nombre: 'Coordinación de Territorio', rol: 'equipo', rolLabel: 'Equipo de Trabajo' };
+        } else if ((usuario === 'diputada' || usuario === 'diputada@rocioabreu.mx') && clave === 'rocio2026') {
+          currentUser = { usuario: 'diputada', alias: 'diputada', nombre: 'Dip. Rocío Adriana Abreu', rol: 'diputada', rolLabel: 'Diputada Federal' };
+        } else {
+          errorMsg.textContent = 'Credenciales no autorizadas';
+          errorMsg.classList.remove('hidden');
+          return;
+        }
+
+        localStorage.setItem('rocio_agenda_user', JSON.stringify(currentUser));
+        closeDevLoginModal();
+        updateSessionUI();
+        renderDevPanel();
+        updateCounters();
+      }
+    }
+
+    function cerrarSesionDev() {
+      if (!confirm('¿Deseas cerrar la sesión activa y volver a la vista pública?')) return;
+      currentUser = null;
+      localStorage.removeItem('rocio_agenda_user');
+      updateSessionUI();
+      renderPublicActivities();
+
+      // Notificación discreta de confirmación
+      const toast = document.createElement('div');
+      toast.className = 'fixed bottom-6 right-6 z-[100] bg-[#201418] text-crema px-5 py-3 rounded-lg border border-dorado/50 shadow-2xl text-xs font-sans flex items-center gap-2.5 animate-fade-in';
+      toast.innerHTML = '<span class="text-emerald-400 font-bold">✓</span><span>Sesión finalizada. Has vuelto a la vista pública.</span>';
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3500);
+    }
+
+    function toggleDevPanel() {
+      const panel = document.getElementById('dev-management-panel');
+      const text = document.getElementById('toggle-view-text');
+      if (panel.classList.contains('hidden')) {
+        panel.classList.remove('hidden');
+        text.textContent = 'Ocultar Panel de Propuestas';
+        panel.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        panel.classList.add('hidden');
+        text.textContent = 'Ver Panel de Propuestas';
+      }
+    }
+
+    function openNewProposalModal() {
+      document.getElementById('new-proposal-modal').classList.remove('hidden');
+      document.getElementById('new-proposal-modal').classList.add('flex');
+    }
+
+    function closeNewProposalModal() {
+      document.getElementById('new-proposal-modal').classList.add('hidden');
+      document.getElementById('new-proposal-modal').classList.remove('flex');
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('menu-movil');
+      menu.classList.toggle('hidden');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  </script>
+</body>
+</html>

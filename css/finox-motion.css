@@ -1,0 +1,106 @@
+/* ==========================================================================
+   FINOX MOTION DESIGN & ANIMATIONS
+   Transitions, Scroll Reveals, Keyframes & Accessibility
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   SCROLL REVEAL STYLES (Controlled via JS IntersectionObserver)
+   -------------------------------------------------------------------------- */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s var(--ease-finox), transform 0.75s var(--ease-finox);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+/* --------------------------------------------------------------------------
+   MARQUEE KEYFRAMES
+   -------------------------------------------------------------------------- */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   COUNTER ROLL ANIMATION
+   -------------------------------------------------------------------------- */
+.counter-val {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  transition: transform 1.2s var(--ease-finox);
+}
+
+/* --------------------------------------------------------------------------
+   HOVER MICRO-ANIMATIONS
+   -------------------------------------------------------------------------- */
+.hover-lift {
+  transition: transform var(--duration-fast) var(--ease-finox);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Pulse indicator for live events */
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   PREFERS-REDUCED-MOTION (Accessibility Mandatory)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .footer-marquee-track {
+    animation: none !important;
+  }
+}

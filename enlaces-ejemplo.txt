@@ -1,0 +1,21 @@
+# ==============================================================================
+# LISTA DE ENLACES DE FACEBOOK PARA IMPORTACIÓN EN LOTE (Rocío Abreu Portal)
+# ==============================================================================
+# Instrucciones:
+# 1. Pega aquí los enlaces de Facebook que desees cargar (uno por línea).
+# 2. Puedes poner la URL directa o agregar datos opcionales separados por |:
+#    URL | Título (opcional) | Categoría (opcional) | Municipio (opcional)
+#
+# Categorías válidas:
+#   animal    (Bienestar Animal)
+#   canasta   (Canasta Básica)
+#   salud     (Salud Visual y Médica)
+#   energia   (Comisión de Energía)
+#   escuela   (Escuelas Dignas)
+#   territorio(Territorio y Comunidad)
+# ==============================================================================
+
+# Ejemplos:
+https://www.facebook.com/reel/1461882355841973 | Rescate animal y adopción responsable | animal | Campeche
+https://www.facebook.com/RocioAbreuOficial/videos/1138981290886111/ | Entrega de Canasta Básica a bajo costo | canasta | Carmen
+https://www.facebook.com/share/v/1HroxVbmmL/ | Jornada visual y lentes subsidiados | salud | Campeche Capital

@@ -1,0 +1,184 @@
+/* ==========================================================================
+   FINOX DESIGN SYSTEM TOKENS & RESET
+   Replication of Finox (Webflow) Design Language adapted for Civic Leadership
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* =========================================================================
+     PALETA EXACTA DE ROCIOABREU.MX (Sistema Editorial Político)
+     ========================================================================= */
+  /* Primario: Guinda Oficial */
+  --guinda: #8A1538;
+  --guinda-hover: #6e102c;
+  --guinda-primary: #8A1538;
+  --guinda-dark: #6e102c;
+  --guinda-deep: #201418;
+  --guinda-subtle: #f9f0f3;
+
+  /* Ciruela: Fondo cinematográfico del Hero y overlays */
+  --ciruela: #201418;
+  --ciruela-overlay: rgba(32, 20, 24, 0.55);
+  --ciruela-dark: rgba(32, 20, 24, 0.75);
+  --ciruela-solid: rgba(32, 20, 24, 0.95);
+
+  /* Crema: Fondo editorial distintivo (Warm Editorial White) */
+  --crema: #FCFAF6;
+  --crema-muted: rgba(252, 250, 246, 0.75);
+  --crema-card: #FFFFFF;
+
+  /* Tinta: Texto oscuro de alto contraste */
+  --tinta: #1C1917;
+  --tinta-muted: rgba(28, 25, 23, 0.7);
+  --text-main: #1C1917;
+  --text-heading: #1C1917;
+
+  /* Dorado Institucional y Acentos */
+  --dorado: #8A6D3E;
+  --dorado-claro: #A98A5B;
+  --dorado-primary: #8A6D3E;
+  --dorado-border: rgba(169, 138, 91, 0.35);
+
+  /* Líneas divisorias Hairline y Fondos de marcador */
+  --hairline: #E8E2D8;
+  --marcador-bg: #F4F0E8;
+
+  /* Compatibilidad con clases existentes */
+  --off-white: #FCFAF6;
+  --white: #ffffff;
+  --black: #0c0d0e;
+  --bg-primary: #FCFAF6;
+
+  /* Tipografía Oficial de rocioabreu.mx */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Archivo', system-ui, -apple-system, sans-serif;
+  --font-primary: 'Archivo', system-ui, -apple-system, sans-serif;
+
+  --heading-h1: clamp(2.75rem, 6.5vw, 6.5rem);
+  --heading-h2: clamp(2.2rem, 4.2vw, 4rem);
+  --heading-h3: clamp(1.75rem, 3vw, 2.5rem);
+  --heading-h4: clamp(1.35rem, 2.2vw, 1.85rem);
+  --heading-h5: clamp(1.15rem, 1.8vw, 1.45rem);
+  --heading-h6: 1.15rem;
+
+  --paragraph-2xl: 1.25rem;
+  --paragraph-xl: 1.15rem;
+  --paragraph-l: 1.05rem;
+  --paragraph-m: 0.975rem;
+  --paragraph-s: 0.875rem;
+  --paragraph-xs: 0.75rem;
+
+  /* Line Heights */
+  --lh-100: 100%;
+  --lh-110: 110%;
+  --lh-120: 120%;
+  --lh-132: 132%;
+  --lh-150: 150%;
+  --lh-160: 160%;
+
+  /* Letter Spacings */
+  --ls-h1: -0.035em;
+  --ls-h2: -0.025em;
+  --ls-h3: -0.02em;
+  --ls-h4: -0.015em;
+  --ls-body: -0.005em;
+
+  /* Section Spacings */
+  --space-2xs: 8px;
+  --space-xs: 16px;
+  --space-s: 24px;
+  --space-m: 48px;
+  --space-l: 72px;
+  --space-xl: 100px;
+  --space-2xl: 140px;
+
+  /* Border Radii */
+  --radius-xs: 8px;
+  --radius-s: 10px;
+  --radius-m: 14px;
+  --radius-l: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-subtle: 0 4px 20px rgba(115, 22, 43, 0.04);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 16px 40px rgba(115, 22, 43, 0.12);
+  --shadow-dorado: 0 8px 24px rgba(197, 160, 89, 0.25);
+  --shadow-floating: 0 20px 48px rgba(0, 0, 0, 0.16);
+
+  /* Transitions */
+  --ease-finox: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.35s;
+  --duration-slow: 0.7s;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--off-white);
+  color: var(--gray-700);
+  font-family: var(--font-primary);
+  font-size: var(--paragraph-l);
+  line-height: var(--lh-150);
+  font-weight: 400;
+  overflow-x: hidden;
+  position: relative;
+}
+
+::selection {
+  background-color: var(--gray-900);
+  color: var(--white);
+}
+
+img, svg, picture {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1366px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(16px, 3.5vw, 36px);
+  padding-right: clamp(16px, 3.5vw, 36px);
+}

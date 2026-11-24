@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Gestión y Territorio — Diputada Rocío Abreu</title>
+  <meta name="description" content="Mural multimedia de la gestión social, visitas territoriales y apoyos entregados en los municipios de Campeche por la Diputada Rocío Abreu.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../css/finox-tokens.css">
+  <link rel="stylesheet" href="../css/finox-layout.css">
+  <link rel="stylesheet" href="../css/finox-motion.css">
+
+  <style>
+    /* Specific Gallery Styling */
+    .gallery-page-header {
+      padding: 140px 0 40px;
+      background: linear-gradient(135deg, var(--guinda-deep) 0%, var(--guinda-primary) 100%);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-page-header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--dorado-dark), var(--dorado-primary), var(--dorado-light));
+    }
+
+    .gallery-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: var(--paragraph-s);
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 20px;
+    }
+
+    .gallery-breadcrumbs a {
+      color: var(--dorado-light);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .gallery-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .gallery-hero-desc {
+      font-size: var(--paragraph-l);
+      max-width: 760px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+    }
+
+    /* Filter Bar Area */
+    .gallery-controls-section {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--gray-300);
+      position: sticky;
+      top: 80px;
+      z-index: 90;
+      padding: 20px 0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    .filter-group-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .filter-subgroup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-size: var(--paragraph-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--guinda-primary);
+      min-width: 90px;
+    }
+
+    .pill-filter {
+      padding: 7px 16px;
+      border-radius: var(--radius-full);
+      font-size: var(--paragraph-s);
+      font-weight: 600;
+      background: var(--gray-100);
+      color: var(--text-main);
+      border: 1px solid var(--gray-300);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .pill-filter:hover {
+      background: var(--dorado-subtle);
+      border-color: var(--dorado-primary);
+      color: var(--guinda-primary);
+    }
+
+    .pill-filter.active {
+      background: var(--guinda-primary);
+      border-color: var(--guinda-primary);
+      color: var(--white);
+      box-shadow: 0 4px 12px rgba(115, 22, 43, 0.25);
+    }
+
+    /* Gallery Grid */
+    .gallery-grid-section {
+      padding: 60px 0 100px;
+      background-color: var(--bg-primary);
+      min-height: 60vh;
+    }
+
+    .gallery-stats-counter {
+      margin-bottom: 24px;
+      font-size: var(--paragraph-m);
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .gallery-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .gallery-card {
+      background: var(--white);
+      border-radius: var(--radius-l);
+      overflow: hidden;
+      border: 1px solid var(--gray-300);
+      box-shadow: var(--shadow-subtle);
+      transition: transform 0.3s var(--ease-finox), box-shadow 0.3s var(--ease-finox);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-elevated);
+      border-color: var(--dorado-border);
+    }
+
+    .gallery-card-thumb-wrap {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background-color: var(--gray-900);
+    }
+
+    .gallery-card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-finox);
+    }
+
+    .gallery-card:hover .gallery-card-thumb {
+      transform: scale(1.06);
+    }
+
+    .gallery-card-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(8px);
+      color: var(--dorado-light);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: var(--paragraph-xs);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid rgba(197, 160, 89, 0.3);
+    }
+
+    .gallery-card-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .gallery-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--paragraph-xs);
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .gallery-card-municipality {
+      color: var(--guinda-primary);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .gallery-card-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .gallery-card-desc {
+      font-size: var(--paragraph-s);
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .gallery-card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--paragraph-s);
+      font-weight: 600;
+      color: var(--guinda-primary);
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background-color: rgba(10, 14, 20, 0.95);
+      backdrop-filter: blur(16px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-box {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      max-width: 1050px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      position: relative;
+    }
+
+    @media (max-width: 900px) {
+      .lightbox-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.08);
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+
+    .lightbox-close-btn:hover {
+      background: var(--guinda-primary);
+      color: var(--white);
+    }
+
+    .lightbox-media {
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 380px;
+    }
+
+    .lightbox-media img {
+      width: 100%;
+      height: 100%;
+      max-height: 650px;
+      object-fit: cover;
+    }
+
+    .lightbox-info {
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .lightbox-tag-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .lightbox-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--guinda-primary);
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    .lightbox-details {
+      font-size: var(--paragraph-m);
+      color: var(--text-main);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .lightbox-meta-list {
+      background: var(--bg-primary);
+      border-radius: var(--radius-m);
+      padding: 16px;
+      margin-bottom: 24px;
+      font-size: var(--paragraph-s);
+    }
+
+    .lightbox-meta-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--gray-300);
+    }
+
+    .lightbox-meta-item:last-child {
+      border-bottom: none;
+    }
+
+    .share-bar-title {
+      font-size: var(--paragraph-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .share-btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: var(--radius-full);
+      font-size: var(--paragraph-s);
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .share-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .share-btn-wa {
+      background: #25D366;
+    }
+
+    .share-btn-fb {
+      background: #1877F2;
+    }
+
+    .share-btn-copy {
+      background: var(--gray-800);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================
+       NAVBAR (Institucional)
+       ====================================================================== -->
+  <header class="navbar scrolled">
+    <div class="container navbar-wrapper">
+      <div class="navbar-left">
+        <a href="/" class="brand-logo" aria-label="Volver al portal oficial de Rocío Abreu">
+          <div class="brand-crest">
+            <span>RA</span>
+          </div>
+          <div>
+            <span class="brand-name">ROCÍO ABREU</span>
+            <span class="brand-badge">SENADORA POR CAMPECHE</span>
+          </div>
+        </a>
+      </div>
+
+      <nav class="nav-menu" aria-label="Navegación principal">
+        <a href="/" class="nav-link">Inicio</a>
+        <a href="/trayectoria/" class="nav-link">Trayectoria</a>
+        <a href="/trabajo-legislativo/" class="nav-link">Trabajo Legislativo</a>
+        <a href="/gestion/" class="nav-link">Gestión y Apoyos</a>
+        <a href="/agenda/" class="nav-link" style="color: var(--dorado-light); font-weight: 700;">Agenda Digital</a>
+        <a href="/contacto/" class="nav-link">Contacto</a>
+      </nav>
+
+      <div class="navbar-right">
+        <a href="/" class="pill-button" style="background: var(--guinda-primary); color: #fff;">
+          <span>← Volver al Portal</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       HEADER DE LA GALERÍA
+       ====================================================================== -->
+  <section class="gallery-page-header">
+    <div class="container">
+      <div class="gallery-breadcrumbs">
+        <a href="../#inicio">Inicio</a>
+        <span>/</span>
+        <a href="../#gestion-social">Gestión Social</a>
+        <span>/</span>
+        <span>Galería de Territorio y Acciones</span>
+      </div>
+      <h1 class="gallery-hero-title">Mural Multimedia de Gestión y Territorio</h1>
+      <p class="gallery-hero-desc">
+        Evidencia gráfica y audiovisual del compromiso diario en los 11 municipios de Campeche. Desde el respaldo a pescadores en Carmen hasta brigadas de salud integral en comunidades rurales.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BARRA DE FILTROS (Municipio & Temática)
+       ====================================================================== -->
+  <section class="gallery-controls-section" id="filtros">
+    <div class="container">
+      <div class="filter-group-wrap">
+        
+        <!-- Filtro por Municipio -->
+        <div class="filter-subgroup" id="filter-municipio">
+          <span class="filter-label">📍 Municipio:</span>
+          <button class="pill-filter active" data-filter-type="mun" data-filter-val="all">Todos (Campeche)</button>
+          <button class="pill-filter" data-filter-type="mun" data-filter-val="carmen">Cd. del Carmen</button>
+          <button class="pill-filter" data-filter-type="mun" data-filter-val="campeche">San Fco. de Campeche</button>
+          <button class="pill-filter" data-filter-type="mun" data-filter-val="champoton">Champotón</button>
+          <button class="pill-filter" data-filter-type="mun" data-filter-val="escarcega">Escárcega</button>
+          <button class="pill-filter" data-filter-type="mun" data-filter-val="calkini">Calkiní</button>
+          <button class="pill-filter" data-filter-type="mun" data-filter-val="candelaria">Candelaria</button>
+          <button class="pill-filter" data-filter-type="mun" data-filter-val="palizada">Palizada</button>
+        </div>
+
+        <!-- Filtro por Temática -->
+        <div class="filter-subgroup" id="filter-tema">
+          <span class="filter-label">🏷️ Temática:</span>
+          <button class="pill-filter active" data-filter-type="tema" data-filter-val="all">Todas las Causas</button>
+          <button class="pill-filter" data-filter-type="tema" data-filter-val="salud">Salud & Brigadas Médicas</button>
+          <button class="pill-filter" data-filter-type="tema" data-filter-val="pesca">Sector Pesquero & Ribereño</button>
+          <button class="pill-filter" data-filter-type="tema" data-filter-val="educacion">Educación & Escuelas</button>
+          <button class="pill-filter" data-filter-type="tema" data-filter-val="campo">Campo & Productores</button>
+          <button class="pill-filter" data-filter-type="tema" data-filter-val="infraestructura">Energía & Tarifas Justas</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       CUADRÍCULA DE ELEMENTOS MULTIMEDIA (Lazy Loaded)
+       ====================================================================== -->
+  <section class="gallery-grid-section">
+    <div class="container">
+      
+      <div class="gallery-stats-counter">
+        Mostrando <strong id="items-count">8</strong> evidencias verificadas en territorio
+      </div>
+
+      <div class="gallery-cards-grid" id="gallery-grid">
+
+        <!-- Item 1: Sector Pesquero Carmen -->
+        <article class="gallery-card" data-mun="carmen" data-tema="pesca" onclick="openLightbox(0)">
+          <div class="gallery-card-thumb-wrap">
+            <img src="../assets/images/rocio-territorio-pesca.jpg" loading="lazy" alt="Apoyo directo al sector pesquero en Ciudad del Carmen" class="gallery-card-thumb">
+            <span class="gallery-card-badge">Sector Pesquero</span>
+          </div>
+          <div class="gallery-card-body">
+            <div class="gallery-card-meta">
+              <span class="gallery-card-municipality">📍 Ciudad del Carmen</span>
+              <span>18 Octubre, 2026</span>
+            </div>
+            <h3 class="gallery-card-title">Entrega de Equipamiento Marino y Motores para Pescadores Ribereños</h3>
+            <p class="gallery-card-desc">
+              Diálogo y entrega de apoyos en el muelle de la Puntilla para fortalecer la seguridad y productividad de cooperativas pesqueras de la Laguna de Términos.
+            </p>
+            <div class="gallery-card-action">
+              <span>Ampliar evidencia y compartir</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 2: Brigada Médica Campeche -->
+        <article class="gallery-card" data-mun="campeche" data-tema="salud" onclick="openLightbox(1)">
+          <div class="gallery-card-thumb-wrap">
+            <img src="../assets/images/rocio-brigada-salud.jpg" loading="lazy" alt="Brigadas médicas gratuitas en colonias de Campeche" class="gallery-card-thumb">
+            <span class="gallery-card-badge">Salud Comunitaria</span>
+          </div>
+          <div class="gallery-card-body">
+            <div class="gallery-card-meta">
+              <span class="gallery-card-municipality">📍 San Fco. de Campeche</span>
+              <span>12 Octubre, 2026</span>
+            </div>
+            <h3 class="gallery-card-title">Jornada de Especialidades Médicas y Entrega de Medicamentos Gratuitos</h3>
+            <p class="gallery-card-desc">
+              Más de 650 familias atendidas en consulta general, odontología y entrega de lentes graduados sin costo en colonias vulnerables.
+            </p>
+            <div class="gallery-card-action">
+              <span>Ampliar evidencia y compartir</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 3: Comisión de Energía / Tarifas Eléctricas -->
+        <article class="gallery-card" data-mun="carmen" data-tema="infraestructura" onclick="openLightbox(2)">
+          <div class="gallery-card-thumb-wrap">
+            <img src="../assets/images/rocio-energia.jpg" loading="lazy" alt="Gestión de tarifas eléctricas justas para Campeche" class="gallery-card-thumb">
+            <span class="gallery-card-badge">Energía & Tarifas</span>
+          </div>
+          <div class="gallery-card-body">
+            <div class="gallery-card-meta">
+              <span class="gallery-card-municipality">📍 Senado & Cd. del Carmen</span>
+              <span>04 Octubre, 2026</span>
+            </div>
+            <h3 class="gallery-card-title">Defensa de la Tarifa 1F para los 11 Municipios de Campeche</h3>
+            <p class="gallery-card-desc">
+              Mesa de trabajo con CFE y Secretaría de Energía para exigir justicia energética por las altas temperaturas que sufre la población campechana.
+            </p>
+            <div class="gallery-card-action">
+              <span>Ampliar evidencia y compartir</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 4: Educación en Champotón -->
+        <article class="gallery-card" data-mun="champoton" data-tema="educacion" onclick="openLightbox(3)">
+          <div class="gallery-card-thumb-wrap">
+            <img src="../assets/images/proposal-education.jpg" loading="lazy" alt="Entrega de computadoras y becas en Champotón" class="gallery-card-thumb">
+            <span class="gallery-card-badge">Educación</span>
+          </div>
+          <div class="gallery-card-body">
+            <div class="gallery-card-meta">
+              <span class="gallery-card-municipality">📍 Champotón</span>
+              <span>28 Septiembre, 2026</span>
+            </div>
+            <h3 class="gallery-card-title">Rehabilitación de Aulas de Cómputo y Conectividad Escolar</h3>
+            <p class="gallery-card-desc">
+              Equipamiento tecnológico para tres secundarias técnicas rurales, permitiendo acceso a internet de alta velocidad a más de 800 jóvenes.
+            </p>
+            <div class="gallery-card-action">
+              <span>Ampliar evidencia y compartir</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 5: Campo en Escárcega -->
+        <article class="gallery-card" data-mun="escarcega" data-tema="campo" onclick="openLightbox(4)">
+          <div class="gallery-card-thumb-wrap">
+            <img src="../assets/images/proposal-economy.jpg" loading="lazy" alt="Apoyo a productores agrícolas y ganaderos de Escárcega" class="gallery-card-thumb">
+            <span class="gallery-card-badge">Campo & Ganadería</span>
+          </div>
+          <div class="gallery-card-body">
+            <div class="gallery-card-meta">
+              <span class="gallery-card-municipality">📍 Escárcega</span>
+              <span>19 Septiembre, 2026</span>
+            </div>
+            <h3 class="gallery-card-title">Insumos para Pequeños Productores y Ganaderos Ejidales</h3>
+            <p class="gallery-card-desc">
+              Gestión directa de pacas de alimento, biofertilizantes y semillas certificadas ante la temporada de estiaje en la zona sur del estado.
+            </p>
+            <div class="gallery-card-action">
+              <span>Ampliar evidencia y compartir</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 6: Artesanos en Calkiní -->
+        <article class="gallery-card" data-mun="calkini" data-tema="campo" onclick="openLightbox(5)">
+          <div class="gallery-card-thumb-wrap">
+            <img src="../assets/images/about-portrait.jpg" loading="lazy" alt="Apoyo a artesanas del jipi japa en Bécal Calkiní" class="gallery-card-thumb">
+            <span class="gallery-card-badge">Tradición & Empleo</span>
+          </div>
+          <div class="gallery-card-body">
+            <div class="gallery-card-meta">
+              <span class="gallery-card-municipality">📍 Calkiní (Bécal)</span>
+              <span>05 Septiembre, 2026</span>
+            </div>
+            <h3 class="gallery-card-title">Impulso Económico y Comercialización para Tejedores de Jipi Japa</h3>
+            <p class="gallery-card-desc">
+              Programa de financiamiento solidario y registro de marca colectiva para dignificar el trabajo artesanal tradicional de las familias mayas de Calkiní.
+            </p>
+            <div class="gallery-card-action">
+              <span>Ampliar evidencia y compartir</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 7: Candelaria Productivo -->
+        <article class="gallery-card" data-mun="candelaria" data-tema="salud" onclick="openLightbox(6)">
+          <div class="gallery-card-thumb-wrap">
+            <img src="../assets/images/rocio-brigada-salud.jpg" loading="lazy" alt="Atención médica en comunidades aisladas de Candelaria" class="gallery-card-thumb">
+            <span class="gallery-card-badge">Salud Rural</span>
+          </div>
+          <div class="gallery-card-body">
+            <div class="gallery-card-meta">
+              <span class="gallery-card-municipality">📍 Candelaria</span>
+              <span>22 Agosto, 2026</span>
+            </div>
+            <h3 class="gallery-card-title">Unidad Médica Fluvial para Comunidades Ribereñas del Río Candelaria</h3>
+            <p class="gallery-card-desc">
+              Llegada de brigadistas con vacunas, pruebas de laboratorio básicas y atención a mujeres embarazadas en poblados de difícil acceso terrestre.
+            </p>
+            <div class="gallery-card-action">
+              <span>Ampliar evidencia y compartir</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 8: Palizada Pueblo Mágico -->
+        <article class="gallery-card" data-mun="palizada" data-tema="pesca" onclick="openLightbox(7)">
+          <div class="gallery-card-thumb-wrap">
+            <img src="../assets/images/rocio-territorio-pesca.jpg" loading="lazy" alt="Desazolve y apoyo a pescadores de Palizada" class="gallery-card-thumb">
+            <span class="gallery-card-badge">Medio Ambiente</span>
+          </div>
+          <div class="gallery-card-body">
+            <div class="gallery-card-meta">
+              <span class="gallery-card-municipality">📍 Palizada</span>
+              <span>10 Agosto, 2026</span>
+            </div>
+            <h3 class="gallery-card-title">Supervisión de Dragado y Respaldo a Productores Acuícolas</h3>
+            <p class="gallery-card-desc">
+              Recorrido en lancha por el río Palizada verificando obras de protección contra inundaciones y apoyos de repoblamiento de especies nativas.
+            </p>
+            <div class="gallery-card-action">
+              <span>Ampliar evidencia y compartir</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       LIGHTBOX POPUP (Visor Pantalla Completa con Botones WhatsApp y Facebook)
+       ====================================================================== -->
+  <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+    <div class="lightbox-box">
+      <button class="lightbox-close-btn" onclick="closeLightbox()" aria-label="Cerrar visor">×</button>
+      
+      <div class="lightbox-media">
+        <img id="lightbox-img" src="" alt="Evidencia territorial">
+      </div>
+
+      <div class="lightbox-info">
+        <div>
+          <div class="lightbox-tag-row">
+            <span class="gallery-card-badge" id="lightbox-badge">Sector</span>
+            <span class="gallery-card-municipality" id="lightbox-mun">📍 Municipio</span>
+          </div>
+          <h2 class="lightbox-title" id="lightbox-title">Título de la Evidencia</h2>
+          <p class="lightbox-details" id="lightbox-desc">Descripción completa del evento y su impacto real en la comunidad.</p>
+          
+          <div class="lightbox-meta-list">
+            <div class="lightbox-meta-item">
+              <span style="color: var(--text-muted);">Fecha de Gestión:</span>
+              <strong id="lightbox-date">Fecha</strong>
+            </div>
+            <div class="lightbox-meta-item">
+              <span style="color: var(--text-muted);">Legisladora en Territorio:</span>
+              <strong>Sen. Rocío Abreu Artiñano</strong>
+            </div>
+            <div class="lightbox-meta-item">
+              <span style="color: var(--text-muted);">Estado:</span>
+              <strong style="color: var(--civic-green);">● Apoyo Concluido y Verificado</strong>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="share-bar-title">Difundir este logro ciudadano:</div>
+          <div class="share-btn-row">
+            <a href="#" id="share-wa" target="_blank" rel="noopener noreferrer" class="share-btn share-btn-wa">
+              <span>💬 Compartir en WhatsApp</span>
+            </a>
+            <a href="#" id="share-fb" target="_blank" rel="noopener noreferrer" class="share-btn share-btn-fb">
+              <span>📘 Publicar en Facebook</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer Simple -->
+  <footer class="footer-bottom" style="background: var(--bg-dark); color: #fff; padding: 24px 0; text-align: center;">
+    <div class="container">
+      <p style="font-size: var(--paragraph-s); opacity: 0.8;">
+        © 2026 Senadora Rocío Abreu. Galería Oficial de Gestión Territorial • Senado de la República.
+      </p>
+      <p style="margin-top: 8px;">
+        <a href="../#inicio" style="color: var(--dorado-light); text-decoration: underline;">Volver a la página principal</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Data Store for Lightbox
+    const galleryItems = [
+      {
+        img: '../assets/images/rocio-territorio-pesca.jpg',
+        badge: 'Sector Pesquero',
+        mun: '📍 Ciudad del Carmen',
+        date: '18 Octubre, 2026',
+        title: 'Entrega de Equipamiento Marino y Motores para Pescadores Ribereños',
+        desc: 'Encuentro con más de 200 familias de pescadores en el muelle de La Puntilla, Ciudad del Carmen. Se entregaron motores fuera de borda ecológicos y chalecos salvavidas reglamentarios para salvaguardar la vida en el mar.',
+        url: window.location.href
+      },
+      {
+        img: '../assets/images/rocio-brigada-salud.jpg',
+        badge: 'Salud Comunitaria',
+        mun: '📍 San Fco. de Campeche',
+        date: '12 Octubre, 2026',
+        title: 'Jornada de Especialidades Médicas y Entrega de Medicamentos Gratuitos',
+        desc: 'Instalación de carpas médicas de alta resolución en San Francisco de Campeche. Médicos generales, optometristas y dentistas brindaron atención prioritaria y entrega de recetas completas.',
+        url: window.location.href
+      },
+      {
+        img: '../assets/images/rocio-energia.jpg',
+        badge: 'Energía & Tarifas',
+        mun: '📍 Senado & Cd. del Carmen',
+        date: '04 Octubre, 2026',
+        title: 'Defensa de la Tarifa 1F para los 11 Municipios de Campeche',
+        desc: 'Reunión de alto nivel con autoridades de la CFE y el Gobierno Federal para consolidar el subsidio de verano y reclasificación de la tarifa eléctrica más baja del país para todos los hogares campechanos.',
+        url: window.location.href
+      },
+      {
+        img: '../assets/images/proposal-education.jpg',
+        badge: 'Educación',
+        mun: '📍 Champotón',
+        date: '28 Septiembre, 2026',
+        title: 'Rehabilitación de Aulas de Cómputo y Conectividad Escolar',
+        desc: 'Dotación de computadoras y cableado estructurado en tres planteles de educación media básica en comunidades de Champotón.',
+        url: window.location.href
+      },
+      {
+        img: '../assets/images/proposal-economy.jpg',
+        badge: 'Campo & Ganadería',
+        mun: '📍 Escárcega',
+        date: '19 Septiembre, 2026',
+        title: 'Insumos para Pequeños Productores y Ganaderos Ejidales',
+        desc: 'Entrega de pacas de heno, tanques de almacenamiento de agua y biofertilizantes para amortiguar el impacto del estiaje prolongado.',
+        url: window.location.href
+      },
+      {
+        img: '../assets/images/about-portrait.jpg',
+        badge: 'Tradición & Empleo',
+        mun: '📍 Calkiní (Bécal)',
+        date: '05 Septiembre, 2026',
+        title: 'Impulso Económico y Comercialización para Tejedores de Jipi Japa',
+        desc: 'Apoyo con materia prima y canales directos de venta para la comunidad artesana en las cuevas tradicionales de Bécal, preservando el patrimonio maya.',
+        url: window.location.href
+      },
+      {
+        img: '../assets/images/rocio-brigada-salud.jpg',
+        badge: 'Salud Rural',
+        mun: '📍 Candelaria',
+        date: '22 Agosto, 2026',
+        title: 'Unidad Médica Fluvial para Comunidades Ribereñas del Río Candelaria',
+        desc: 'Atención médica directa por vía fluvial llevando chequeos de diabetes, hipertensión y cuadro básico de medicamentos a comunidades aisladas.',
+        url: window.location.href
+      },
+      {
+        img: '../assets/images/rocio-territorio-pesca.jpg',
+        badge: 'Medio Ambiente',
+        mun: '📍 Palizada',
+        date: '10 Agosto, 2026',
+        title: 'Supervisión de Dragado y Respaldo a Productores Acuícolas',
+        desc: 'Verificación en terreno del cauce del río Palizada y apoyo para la cría sustentable de mojarras y peces nativos para autoconsumo familiar.',
+        url: window.location.href
+      }
+    ];
+
+    // Filter Logic
+    let currentMun = 'all';
+    let currentTema = 'all';
+
+    const munBtns = document.querySelectorAll('#filter-municipio .pill-filter');
+    const temaBtns = document.querySelectorAll('#filter-tema .pill-filter');
+    const cards = document.querySelectorAll('.gallery-card');
+    const counterEl = document.getElementById('items-count');
+
+    function applyFilters() {
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const cardMun = card.getAttribute('data-mun');
+        const cardTema = card.getAttribute('data-tema');
+
+        const matchMun = (currentMun === 'all' || currentMun === cardMun);
+        const matchTema = (currentTema === 'all' || currentTema === cardTema);
+
+        if (matchMun && matchTema) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      counterEl.textContent = visibleCount;
+    }
+
+    munBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        munBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentMun = btn.getAttribute('data-filter-val');
+        applyFilters();
+      });
+    });
+
+    temaBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        temaBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentTema = btn.getAttribute('data-filter-val');
+        applyFilters();
+      });
+    });
+
+    // Lightbox Logic
+    const modal = document.getElementById('lightbox-modal');
+    const imgEl = document.getElementById('lightbox-img');
+    const badgeEl = document.getElementById('lightbox-badge');
+    const munEl = document.getElementById('lightbox-mun');
+    const titleEl = document.getElementById('lightbox-title');
+    const descEl = document.getElementById('lightbox-desc');
+    const dateEl = document.getElementById('lightbox-date');
+    const shareWa = document.getElementById('share-wa');
+    const shareFb = document.getElementById('share-fb');
+
+    function openLightbox(index) {
+      const item = galleryItems[index];
+      if (!item) return;
+
+      imgEl.src = item.img;
+      badgeEl.textContent = item.badge;
+      munEl.textContent = item.mun;
+      titleEl.textContent = item.title;
+      descEl.textContent = item.desc;
+      dateEl.textContent = item.date;
+
+      const pageUrl = encodeURIComponent(window.location.origin + '/galeria-territorio/');
+      const shareText = encodeURIComponent(`Conoce las acciones de la Senadora Rocío Abreu en Campeche: "${item.title}" - `);
+      
+      shareWa.href = `https://api.whatsapp.com/send?text=${shareText}${pageUrl}`;
+      shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
